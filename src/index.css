@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 45 30% 96%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 45 30% 96%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 45 30% 96%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 45 30% 96%;
+
+    --secondary: 145 63% 25%;
+    --secondary-foreground: 45 30% 96%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 45 10% 70%;
+
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Christmas colors */
+    --christmas-red: 0 72% 51%;
+    --christmas-green: 145 63% 25%;
+    --christmas-gold: 43 74% 49%;
+    --christmas-cream: 45 30% 96%;
+    --christmas-dark: 0 0% 8%;
+
+    /* Gradients */
+    --gradient-festive: linear-gradient(135deg, hsl(var(--christmas-red)) 0%, hsl(var(--christmas-dark)) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%) 0%, hsl(35 85% 60%) 100%);
+    --gradient-snow: linear-gradient(180deg, hsl(220 30% 15%) 0%, hsl(220 35% 8%) 100%);
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 45 30% 96%;
+    --card: 0 0% 12%;
+    --card-foreground: 45 30% 96%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 45 30% 96%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 45 30% 96%;
+    --secondary: 145 63% 25%;
+    --secondary-foreground: 45 30% 96%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 45 10% 70%;
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Lora', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-christmas {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-primary-christmas {
+    @apply btn-christmas bg-primary text-primary-foreground;
+    @apply hover:bg-primary/90 shadow-[0_4px_20px_hsl(var(--primary)/0.3)];
+  }
+
+  .btn-secondary-christmas {
+    @apply btn-christmas bg-secondary text-secondary-foreground;
+    @apply hover:bg-secondary/90 shadow-[0_4px_20px_hsl(var(--secondary)/0.3)];
+  }
+
+  .btn-gold {
+    @apply btn-christmas text-accent-foreground font-semibold;
+    background: var(--gradient-gold);
+    @apply hover:shadow-[0_4px_25px_hsl(var(--accent)/0.4)];
+  }
+
+  .volume-notice {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full;
+    @apply bg-muted/80 backdrop-blur-sm text-muted-foreground text-sm;
+    @apply border border-border/50;
+  }
+
+  .video-container {
+    @apply relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden;
+    @apply shadow-[0_20px_60px_rgba(0,0,0,0.5)];
+  }
+
+  .greeting-card {
+    @apply relative p-8 md:p-12 rounded-3xl overflow-hidden;
+    @apply bg-card/80 backdrop-blur-md border border-border/30;
+    @apply shadow-[0_25px_80px_rgba(0,0,0,0.4)];
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 30px hsl(var(--accent) / 0.5);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .animate-snow {
+    animation: snow 10s linear infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes snow {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
